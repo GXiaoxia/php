@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{
+			list-style-type: decimal;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1">请求github数据</button>
+	<div id="data1"></div>
+	<button id="btn2">请求jsonplaceholder数据</button>
+	<div id="data2"></div>
+</body>
+<script>
+	document.getElementById('btn1').addEventListener('click',getData1);
+	document.getElementById('btn2').addEventListener('click',getData2);
+	function getData1(){
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET','http://api.github.com/users',true);
+		xhr.onload = function(){
+			if(this.status == 200){
+				var datas = JSON.parse(this.responseText);
+				var output = '';
+				for(var i in datas){
+					output += `
+						<table border="1">
+							<tr>
+								<td>
+									<ul>
+										<li>login: ${datas[i].login}</li>
+										<li>id: ${datas[i].id}</li>
+										<li>avatar_url: ${datas[i].avatar_url}</li>
+										<li>gravatar_id: ${datas[i].gravatar_id}</li>
+										<li>url: ${datas[i].url}</li>
+										<li>html_url: ${datas[i].html_url}</li>
+										<li>followers_url: ${datas[i].followers_url}</li>
+										<li>gists_url: ${datas[i].gists_url}</li>
+										<li>starred_url: ${datas[i].starred_url}</li>
+										<li>subscriptions_url: ${datas[i].subscriptions_url}</li>
+										<li>organizations_url: ${datas[i].organizations_url}</li>
+										<li>repos_url: ${datas[i].repos_url}</li>
+										<li>events_url: ${datas[i].events_url}</li>
+										<li>received_events_url: ${datas[i].received_events_url}</li>
+										<li>type: ${datas[i].type}</li>
+										<li>site_admin: ${datas[i].site_admin}</li>
+									</ul>
+								</td>
+							</tr>
+						</table>	
+					`;
+				}
+				document.getElementById('data1').innerHTML = output;
+			}
+		}
+		xhr.send();
+	}
+
+	function getData2(){
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET','https://jsonplaceholder.typicode.com/users',true);
+		xhr.onload = function(){
+			if(this.status == 200){
+				var datas = JSON.parse(this.responseText);
+				var output2 = '';
+				for(var i in datas){
+					output2 += `
+						<ul>
+							<li>
+								<strong>id:</strong>
+								${datas[i].id}
+							</li>
+							<li>
+								<strong>name:</strong>
+								${datas[i].name}
+							</li>
+							<li>
+								<strong>username:</strong>
+								${datas[i].username}
+							</li>
+							<li>
+								<strong>email:</strong>
+								${datas[i].email}
+							</li>
+							<li>
+								<strong>address:</strong>
+								<ul>
+									<li><strong>street:</strong>${datas[i].address.street}</li>
+									<li><strong>suite:</strong>${datas[i].address.suite}</li>
+									<li><strong>city:</strong>${datas[i].address.city}</li>
+									<li><strong>zipcode:</strong>${datas[i].address.zipcode}</li>
+									<li><strong>geo:</strong>
+										<ul>
+											<li><strong>lat</strong>${datas[i].address.geo.lat}</li>
+											<li><strong>ing</strong>${datas[i].address.geo.ing}</li>
+										</ul>
+									</li>
+								</ul>
+								
+							</li>
+						</ul><hr>
+					`;
+				}
+				document.getElementById('data2').innerHTML = output2;
+			}
+		}
+		xhr.send();
+	}
+</script>
+</html>
