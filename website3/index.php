@@ -29,7 +29,7 @@
 				$headers .= "Content-type:text/html;charset=utf-8" . "\r\n";
 				$headers .= "发自".$name."<".$email.">"."\r\n";
 
-				# 判断邮件发送是否成功
+				# 判断邮件发送是否成功 -- mail()函数
 				if(mail($toEmail,$subject,$body,$headers)){
 					# success
 					$msg = '邮件发送成功!';
