@@ -1,5 +1,4 @@
-# PHP
 
-### 在master主线中,不会有任何的内容
+### 主要讲解的内容是对数据库的insert/update/delete/select等操作
 
-### 讲解的所有内容会以分支的形式上传
+
