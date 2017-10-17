@@ -27,7 +27,7 @@
 		xhr.open('GET',"sample.txt",true);
 		console.log(xhr.readyState);
 
-		// 3.执行处理数据的方法
+		// 3.执行处理数据的方法(异步)
 		/*xhr.onload = function(){
 			// console.log(xhr.readyState);
 			if(this.status == 200){
@@ -51,7 +51,6 @@
 
 		// 4.发送请求
 		xhr.send();
-
 	}
 
 	/*readyState
