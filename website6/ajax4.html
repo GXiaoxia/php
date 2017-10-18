@@ -50,7 +50,7 @@
 	}
 
 	function getData2(e){
-		e.preventDefault();
+		e.preventDefault();		// form表单submit有自动刷新
 		var xhr = new XMLHttpRequest();
 		var name = document.getElementById('name1').value;
 		xhr.open('GET','process.php?name='+name,true);

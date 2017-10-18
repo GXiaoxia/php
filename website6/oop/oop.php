@@ -46,7 +46,7 @@
 	echo $person1->getName();
 	$person1->setEmail('11@qq.com');
 	echo $person1->getEmail();*/
-
+	
 	/*$person1 = new Person("guo","11@qq.com");
 	echo $person1->getName();*/
 
